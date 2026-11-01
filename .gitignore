@@ -1,0 +1,7 @@
+# Build output (scripts/build.sh and DFU packages)
+firmware/
+build/
+*.uf2
+*.hex
+*_dfu.zip
+.DS_Store

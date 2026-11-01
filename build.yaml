@@ -1,0 +1,7 @@
+# Targets built by GitHub Actions and by build.sh.
+---
+include:
+  - board: nice_nano_v2
+    shield: skeletyl_left
+  - board: nice_nano_v2
+    shield: skeletyl_right
