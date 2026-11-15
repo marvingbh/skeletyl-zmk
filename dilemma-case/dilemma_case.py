@@ -13,7 +13,7 @@ HERE = pathlib.Path(__file__).parent
 PCB = pathlib.Path(sys.argv[1])
 OUT = pathlib.Path(sys.argv[2]); OUT.mkdir(parents=True, exist_ok=True)
 # gap between keyboard PCB top and controller PCB bottom (depends on the headers)
-MCU_GAP = float(sys.argv[3]) if len(sys.argv) > 3 else 1.0
+MCU_GAP = float(sys.argv[3]) if len(sys.argv) > 3 else 2.5   # standard header plastic
 
 # ---------- parameters ----------
 CLR = 0.4            # gap between PCB edge and the wall
@@ -166,9 +166,14 @@ def edge_ys(x0):
             ys.append(ay + (by - ay) * (x0 - ax) / (bx - ax))
     return ys
 top_edge_y = min(edge_ys(mcu_x))            # back edge of the board at the controller
-USB_W, USB_Z = 12.5, Z_PCB_TOP + MCU_GAP + MCU_PCB + MCU_USB_H / 2      # cable plug width, plug centre height
-usb_slot = Box(USB_W, 3 * WALL + 2 * CLR, 40, align=(Align.CENTER, Align.MIN, Align.MIN)).moved(
-    Location((mcu_x, -top_edge_y - 0.5, USB_Z - 3.6)))
+USB_W = 12.5                                # cable plug width
+# U-shaped notch from just above the PCB through the top of the cover, so the
+# plug fits whatever header height the controller is soldered on.
+USB_Z0 = Z_PCB_TOP + 0.2
+usb_slot = Box(USB_W, 3 * WALL + 2 * CLR, 40, align=(Align.CENTER, Align.MIN, Align.MIN))
+usb_slot = fillet(usb_slot.edges().filter_by(Axis.Y).group_by(Axis.Z)[0], 2.0)
+usb_slot = usb_slot.moved(Location((mcu_x, -top_edge_y - 0.5, USB_Z0)))
+USB_Z = Z_PCB_TOP + MCU_GAP + MCU_PCB + MCU_USB_H / 2   # plug centre for this build
 cover -= usb_slot      # open notch through the cover's back wall, so any plug fits
 tray -= usb_slot
 # finger room over the power switch
@@ -193,5 +198,5 @@ print(f"PCB top z={Z_PCB_TOP:.1f}, rim z={Z_RIM:.1f}, cover top z={Z_COVER_TOP:.
 print(f"tray holes {len(TRAY_HOLES)}, cover holes {len(COVER_HOLES)}, pod x {pod_x0:.1f}..{pod_x1:.1f} y {pod_y0:.1f}..{pod_y1:.1f}")
 cover_len = Z_COVER_TOP - HEAD_DEPTH - 0.6          # head seat down to inside the nut
 cover_screw = max(l for l in (6, 8, 10, 12, 14, 16, 18, 20) if l <= cover_len)
-print(f"USB notch at x={mcu_x:.1f}, back edge y={top_edge_y:.1f}, z {USB_Z-3.6:.1f}..top")
+print(f"USB U-notch at x={mcu_x:.1f}, back edge y={top_edge_y:.1f}, z {USB_Z0:.1f}..top (plug centre {USB_Z:.1f})")
 print(f"screws: tray M3x6 ({len(TRAY_HOLES)}), cover M3x{cover_screw} ({len(COVER_HOLES)}), nuts {len(holes)}")

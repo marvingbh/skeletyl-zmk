@@ -4,7 +4,7 @@
 
 - `out/`: print files (STL) and CAD files (STEP) for the tray and the cover, left and right.
 - `preview/`: renders and `.glb` models of the assembled keyboard.
-- `dilemma_case.py`: the parametric model (build123d). Run `python dilemma_case.py <dilemma.kicad_pcb> out [controller_gap_mm]`. The gap is the space between the keyboard PCB and the controller board (default 1.0). The cover is flush with the keycaps up to about 1.9 mm, and grows taller above that.
+- `dilemma_case.py`: the parametric model (build123d). Run `python dilemma_case.py <dilemma.kicad_pcb> out [controller_gap_mm]`. The gap is the space between the keyboard PCB and the controller board (default 2.5, a standard header with its plastic spacer). The cover is flush with the keycaps up to about 1.9 mm, and grows taller above that.
 - `assembly.py`: builds the preview models. `check.py`: top view and cross-section plots.
 
-Screws: 5× M3×6 (tray), 4× M3×12 (cover), 9 M3 nuts. Current files in `out/` are for a 1.0 mm controller gap.
+Screws: 5× M3×6 (tray), 4× M3×12 (cover), 9 M3 nuts. Current files in `out/` are for a 2.5 mm controller gap. The USB notch is an open U from just above the PCB through the cover top, so the cable fits whatever header height is used; only the cover height depends on the gap.
