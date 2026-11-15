@@ -63,11 +63,11 @@ Hold **Space** (left middle thumb) or **Delete** (right outer thumb).
 
 ## SYM
 
-Hold **Tab** (left outer thumb) or **Backspace** (right inner thumb). With **Tab** held, the right thumbs type **(** (Backspace thumb) and **)** (Delete thumb).
+Hold **Tab** (left outer thumb) or **Backspace** (right inner thumb). With **Tab** held, the right thumbs type **(** (Backspace thumb) and **)** (Delete thumb). The right side is NUM with Shift: each key gives the symbol printed above that NUM key's number on a normal keyboard (8 → *, 2 → @). The ⌘ slot of NUM holds a plain **;** here.
 
 | | | | | | ‖ | | | | | |
 |:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|
-| { | & | * | ( | } | ‖ | · | · | · | · | · |
-| : | $ | % | ^ | + | ‖ | · | ⇧ | ⌃ | ⌥ | ⌘ |
-| ~ | ! | @ | # | \| | ‖ | · | · | · | · | · |
+| { | & | * | ( | } | ‖ | { | & | * | ( | } |
+| : | $ | % | ^ | + | ‖ | + | $ | % | ^ | ; |
+| ~ | ! | @ | # | \| | ‖ | \| | ! | @ | # | > |
 | | | ` | _ | ▽ | ‖ | ▽ | ▽ | · | | |
