@@ -110,7 +110,7 @@
             bindings = <
     &kp LS(LBKT)     &kp LS(N7)       &kp LS(N8)       &kp LS(N9)       &kp LS(RBKT)       &kp LS(LBKT)     &kp LS(N7)       &kp LS(N8)       &kp LS(N9)       &kp LS(RBKT)
     &kp LS(SEMI)     &kp LS(N4)       &kp LS(N5)       &kp LS(N6)       &kp LS(EQUAL)      &kp LS(EQUAL)    &kp LS(N4)       &kp LS(N5)       &kp LS(N6)       &kp SEMI
-    &kp LS(GRAVE)    &kp LS(N1)       &kp LS(N2)       &kp LS(N3)       &kp LS(BSLH)       &kp LS(BSLH)     &kp LS(N1)       &kp LS(N2)       &kp LS(N3)       &kp LS(DOT)
+    &kp LS(GRAVE)    &kp LS(N1)       &kp LS(N2)       &kp LS(N3)       &kp LS(BSLH)       &kp LS(BSLH)     &kp LS(N1)       &kp LS(N2)       &kp LS(N3)       &kp LS(GRAVE)
                                       &kp GRAVE        &kp LS(MINUS)    &trans             &kp LS(N9)       &trans           &kp LS(N0)
             >;
         };
