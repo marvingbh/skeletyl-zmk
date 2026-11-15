@@ -38,7 +38,7 @@ def half():
         parts.append(colored(cap.moved(loc), (0.92, 0.92, 0.88)))
     mx, my = P(g["mcu_x"], g["mcu_y"])
     parts.append(colored(Box(18, 33.3, 1.2, align=(Align.CENTER, Align.CENTER, Align.MIN)).moved(Location((mx, my, zt + 1.0))), (0.05, 0.05, 0.4)))
-    parts.append(colored(Box(9, 7.5, 3.3, align=(Align.CENTER, Align.MAX, Align.MIN)).moved(Location((mx, my + 16.65 + 0.8, zt + 2.2))), (0.7, 0.7, 0.72)))
+    parts.append(colored(Box(9, 7.5, 3.3, align=(Align.CENTER, Align.MAX, Align.MIN)).moved(Location((mx, -(g['top_edge_y'] - 1.5), zt + 2.2))), (0.7, 0.7, 0.72)))
     bx = g["pod_x0"] + g["BAT_CLR"] + g["BAT"][0] / 2
     by = -(g["pod_y0"] + g["BAT_CLR"] + 1 + g["BAT"][1] / 2)
     parts.append(colored(Box(*g["BAT"], align=(Align.CENTER, Align.CENTER, Align.MIN)).moved(Location((bx, by, g["FLOOR"]))), (0.85, 0.75, 0.2)))
