@@ -71,3 +71,8 @@ The local build needs Docker. See [docs/flashing.md](docs/flashing.md) for putti
 ## License
 
 [MIT](LICENSE)
+
+## Other folders
+
+- `guide/`: the build guide with the keymap viewer. After changing the keymap, run `python3 scripts/keymap_to_guide.py guide/skeletyl-build.src.html guide/skeletyl-build.html`.
+- `dilemma-case/`: a 3D-printable case for the Dilemma-3mod keyboard. See its README.
