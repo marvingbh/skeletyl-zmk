@@ -103,14 +103,14 @@ Bridge each key's two switch holes with tweezers. The left half must be on USB o
 | **115** | q | w | e | r | t |
 | **024** | a | s | d | f | g |
 | **022** | z | x | c | v | b |
-| **106** | Esc | | Tab | Space | |
+| **106** | Tab | | Esc | Space | |
 
 | Right | 104 | 011 | 100 | 009 | 029 |
 |---|---|---|---|---|---|
 | **115** | y | u | i | o | p |
 | **024** | h | j | k | l | ' |
 | **022** | n | m | , | . | / |
-| **106** | | Enter | Bksp | | Del |
+| **106** | | Enter | Del | | Bksp |
 
 A dead key is almost always a reversed diode or a loose ribbon wire.
 

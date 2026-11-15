@@ -15,11 +15,11 @@ Default layer.
 | Q | W | E | R | T | ‖ | Y | U | I | O | P |
 | A <sub>⌘</sub> | S <sub>⌥</sub> | D <sub>⌃</sub> | F <sub>⇧</sub> | G | ‖ | H | J <sub>⇧</sub> | K <sub>⌃</sub> | L <sub>⌥</sub> | ' <sub>⌘</sub> |
 | Z <sub>Mouse</sub> | X | C | V | B | ‖ | N | M | , | . | / <sub>Mouse</sub> |
-| | | Tab <sub>FN</sub> | Space <sub>NUM</sub> | Esc <sub>SYM</sub> | ‖ | Del <sub>SYM</sub> | Enter <sub>NAV</sub> | ⌫ <sub>NUM</sub> | | |
+| | | Esc <sub>FN</sub> | Space <sub>NUM</sub> | Tab <sub>SYM</sub> | ‖ | ⌫ <sub>SYM</sub> | Enter <sub>NAV</sub> | Del <sub>NUM</sub> | | |
 
 ## FN
 
-Hold **Tab** (left inner thumb).
+Hold **Esc** (left inner thumb).
 
 | | | | | | ‖ | | | | | |
 |:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|
@@ -52,7 +52,7 @@ Hold **Z** or **/**.
 
 ## NUM
 
-Hold **Space** (left middle thumb) or **Backspace** (right outer thumb).
+Hold **Space** (left middle thumb) or **Delete** (right outer thumb).
 
 | | | | | | ‖ | | | | | |
 |:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|
@@ -63,7 +63,7 @@ Hold **Space** (left middle thumb) or **Backspace** (right outer thumb).
 
 ## SYM
 
-Hold **Esc** (left outer thumb) or **Del** (right inner thumb).
+Hold **Tab** (left outer thumb) or **Backspace** (right inner thumb). With **Tab** held, the right thumbs type **(** (Backspace thumb) and **)** (Delete thumb).
 
 | | | | | | ‖ | | | | | |
 |:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|
