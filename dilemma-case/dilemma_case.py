@@ -12,6 +12,8 @@ from build123d import *
 HERE = pathlib.Path(__file__).parent
 PCB = pathlib.Path(sys.argv[1])
 OUT = pathlib.Path(sys.argv[2]); OUT.mkdir(parents=True, exist_ok=True)
+# gap between keyboard PCB top and controller PCB bottom (depends on the headers)
+MCU_GAP = float(sys.argv[3]) if len(sys.argv) > 3 else 1.0
 
 # ---------- parameters ----------
 CLR = 0.4            # gap between PCB edge and the wall
@@ -20,7 +22,9 @@ FLOOR = 2.0
 GAP_UNDER = 3.0      # PCB bottom above floor: choc pins + solder
 PCB_T = 1.6
 RIM_ABOVE = 1.0      # tray wall top above PCB top
-COVER_IN = 6.4       # free height above PCB top under the cover: cover top flush with Choc keycaps (~8 mm). Needs the controller mounted low (<= ~1.9 mm gap)
+MCU_PCB, MCU_USB_H = 1.2, 3.3   # controller board, USB-C height above it
+# free height under the cover: at least flush with the Choc keycaps (6.4), more for tall headers
+COVER_IN = max(6.4, MCU_GAP + MCU_PCB + MCU_USB_H + 0.9)
 COVER_TOP = 1.6
 BAT = (20.0, 38.0, 9.0)   # battery x, y, z (lying flat on the pod floor)
 BAT_CLR = 1.0
@@ -162,7 +166,7 @@ def edge_ys(x0):
             ys.append(ay + (by - ay) * (x0 - ax) / (bx - ax))
     return ys
 top_edge_y = min(edge_ys(mcu_x))            # back edge of the board at the controller
-USB_W, USB_Z = 12.5, Z_PCB_TOP + 3.85       # cable plug width, plug centre height
+USB_W, USB_Z = 12.5, Z_PCB_TOP + MCU_GAP + MCU_PCB + MCU_USB_H / 2      # cable plug width, plug centre height
 usb_slot = Box(USB_W, 3 * WALL + 2 * CLR, 40, align=(Align.CENTER, Align.MIN, Align.MIN)).moved(
     Location((mcu_x, -top_edge_y - 0.5, USB_Z - 3.6)))
 cover -= usb_slot      # open notch through the cover's back wall, so any plug fits
@@ -184,6 +188,7 @@ save(mirror(cover, mirror_plane), "dilemma_cover_right")
 
 bb = (tray + cover).bounding_box()
 print(f"size {bb.size.X:.1f} x {bb.size.Y:.1f} x {bb.size.Z:.1f} mm")
+print(f"controller gap {MCU_GAP} mm -> cover inside {COVER_IN:.1f} mm")
 print(f"PCB top z={Z_PCB_TOP:.1f}, rim z={Z_RIM:.1f}, cover top z={Z_COVER_TOP:.1f}")
 print(f"tray holes {len(TRAY_HOLES)}, cover holes {len(COVER_HOLES)}, pod x {pod_x0:.1f}..{pod_x1:.1f} y {pod_y0:.1f}..{pod_y1:.1f}")
 cover_len = Z_COVER_TOP - HEAD_DEPTH - 0.6          # head seat down to inside the nut

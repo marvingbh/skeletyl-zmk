@@ -8,7 +8,7 @@ from build123d import *
 
 pcb_path, out_dir = sys.argv[1], pathlib.Path(sys.argv[2])
 here = pathlib.Path(__file__).parent
-sys.argv = [str(here / "dilemma_case.py"), pcb_path, str(out_dir)]
+sys.argv = [str(here / "dilemma_case.py"), pcb_path, str(out_dir)] + sys.argv[3:4]
 g = runpy.run_path(sys.argv[0], run_name="__main__")
 s = pathlib.Path(pcb_path).read_text()
 P = g["P"]; zt = g["Z_PCB_TOP"]; zb = g["Z_PCB_BOT"]
@@ -37,8 +37,8 @@ def half():
         parts.append(colored(housing.moved(loc), (0.15, 0.15, 0.15)))
         parts.append(colored(cap.moved(loc), (0.92, 0.92, 0.88)))
     mx, my = P(g["mcu_x"], g["mcu_y"])
-    parts.append(colored(Box(18, 33.3, 1.2, align=(Align.CENTER, Align.CENTER, Align.MIN)).moved(Location((mx, my, zt + 1.0))), (0.05, 0.05, 0.4)))
-    parts.append(colored(Box(9, 7.5, 3.3, align=(Align.CENTER, Align.MAX, Align.MIN)).moved(Location((mx, -(g['top_edge_y'] - 1.5), zt + 2.2))), (0.7, 0.7, 0.72)))
+    parts.append(colored(Box(18, 33.3, 1.2, align=(Align.CENTER, Align.CENTER, Align.MIN)).moved(Location((mx, my, zt + g["MCU_GAP"]))), (0.05, 0.05, 0.4)))
+    parts.append(colored(Box(9, 7.5, 3.3, align=(Align.CENTER, Align.MAX, Align.MIN)).moved(Location((mx, -(g['top_edge_y'] - 1.5), zt + g["MCU_GAP"] + g["MCU_PCB"]))), (0.7, 0.7, 0.72)))
     bx = g["pod_x0"] + g["BAT_CLR"] + g["BAT"][0] / 2
     by = -(g["pod_y0"] + g["BAT_CLR"] + 1 + g["BAT"][1] / 2)
     parts.append(colored(Box(*g["BAT"], align=(Align.CENTER, Align.CENTER, Align.MIN)).moved(Location((bx, by, g["FLOOR"]))), (0.85, 0.75, 0.2)))
