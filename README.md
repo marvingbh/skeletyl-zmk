@@ -76,3 +76,5 @@ The local build needs Docker. See [docs/flashing.md](docs/flashing.md) for putti
 
 - `guide/`: the build guide with the keymap viewer. After changing the keymap, run `python3 scripts/keymap_to_guide.py guide/skeletyl-build.src.html guide/skeletyl-build.html`.
 - `dilemma-case/`: a 3D-printable case for the Dilemma-3mod keyboard. See its README.
+- `config/boards/shields/dilemma3mod/`: ZMK shield for the Dilemma-3mod. It uses the same keymap (`config/dilemma3mod.keymap` includes `skeletyl.keymap`). Build with `KB=dilemma3mod scripts/build.sh all`.
+- `qmk/tbkmini/`: the same keymap in QMK for the wired TBK Mini.

@@ -1,0 +1,2 @@
+// Same keymap as the Skeletyl: both keyboards use one file.
+#include "skeletyl.keymap"

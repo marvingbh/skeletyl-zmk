@@ -1,0 +1,11 @@
+file_format: "1"
+id: dilemma3mod
+name: Dilemma 3mod
+type: shield
+url: https://github.com/dixls/Dilemma-3mod
+requires: [pro_micro]
+features:
+  - keys
+siblings:
+  - dilemma3mod_left
+  - dilemma3mod_right
