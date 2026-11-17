@@ -24,7 +24,7 @@ for blk, nm in names.items():
     for b, args in toks:
         a = args.split()
         if b == 'kp': keys.append({'t': key(a[0])})
-        elif b in ('hml','hmr'): keys.append({'t': key(a[1]), 'h': MOD[a[0]]})
+        elif b in ('hml','hmr','hms','hsl','hsr'): keys.append({'t': key(a[1]), 'h': MOD[a[0]]})
         elif b == 'lt': keys.append({'t': key(a[1]), 'h': LN[int(a[0])], 'l': 1})
         elif b == 'trans': keys.append({'t':'▽','x':1})
         elif b == 'none': keys.append({'t':''})

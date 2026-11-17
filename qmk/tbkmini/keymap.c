@@ -50,7 +50,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     // right side = NUM with Shift (8 -> *, 2 -> @); ( ) on the right thumbs
     [SYM] = LAYOUT_split_3x6_3(
         KC_NO, KC_LCBR, KC_AMPR, KC_ASTR, KC_LPRN, KC_RCBR,        KC_LCBR, KC_AMPR, KC_ASTR, KC_LPRN, KC_RCBR, KC_NO,
-        KC_NO, KC_COLN, KC_DLR,  KC_PERC, KC_CIRC, KC_PLUS,        KC_PLUS, KC_DLR,  KC_PERC, KC_CIRC, KC_SCLN, KC_NO,
+        KC_NO, KC_SCLN, KC_DLR,  KC_PERC, KC_CIRC, KC_PLUS,        KC_PLUS, KC_DLR,  KC_PERC, KC_CIRC, KC_COLN, KC_NO,
         KC_NO, KC_TILD, KC_EXLM, KC_AT,   KC_HASH, KC_PIPE,        KC_PIPE, KC_EXLM, KC_AT,   KC_HASH, KC_TILD, KC_NO,
                                  KC_GRV,  KC_UNDS, _______,        KC_LPRN, _______, KC_RPRN
     ),
@@ -72,7 +72,11 @@ bool get_chordal_hold(uint16_t tap_hold_keycode, keyrecord_t *tap_hold_record,
     return get_chordal_hold_default(tap_hold_record, other_record);
 }
 
+// Shift (F, J) uses 200 ms and no flow tap, like ZMK's &hsl/&hsr.
+#define IS_HM_SHIFT(k) ((k) == HM_F || (k) == HM_J)
+
 uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
+    if (IS_HM_SHIFT(keycode)) return 200;
     return IS_QK_MOD_TAP(keycode) ? 280 : TAPPING_TERM;
 }
 
@@ -80,10 +84,12 @@ uint16_t get_quick_tap_term(uint16_t keycode, keyrecord_t *record) {
     return IS_QK_MOD_TAP(keycode) ? 300 : 200;
 }
 
+// S (Alt) is left out, like ZMK's tap-preferred &hms: a key tapped while S is
+// down types "s" + that key; Alt needs S held alone for the tapping term.
 bool get_permissive_hold(uint16_t keycode, keyrecord_t *record) {
-    return IS_QK_MOD_TAP(keycode);
+    return IS_QK_MOD_TAP(keycode) && keycode != HM_S;
 }
 
 uint16_t get_flow_tap_term(uint16_t keycode, keyrecord_t *record, uint16_t prev_keycode) {
-    return IS_QK_MOD_TAP(keycode) ? FLOW_TAP_TERM : 0;
+    return IS_QK_MOD_TAP(keycode) && !IS_HM_SHIFT(keycode) ? FLOW_TAP_TERM : 0;
 }

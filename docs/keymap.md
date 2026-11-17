@@ -4,6 +4,8 @@
 
 - Small text after a key is what it does when **held** (home-row mods ⌘ ⌥ ⌃ ⇧, or a layer).
 - Home-row mods only fire when combined with a key on the **other** half or a thumb, which avoids misfires while typing.
+- **S** (⌥) is stricter: it becomes ⌥ only when held alone for about 0.3 s before the other key. Any key pressed sooner types **s**.
+- **F** and **J** (⇧) work like the old QMK board: Shift after 0.2 s of hold, even right after fast typing, so **?** (F + /) and capitals after a space come out.
 - `·` = nothing, `▽` = transparent (falls through to the layer below).
 
 ## Base
@@ -63,11 +65,11 @@ Hold **Space** (left middle thumb) or **Delete** (right outer thumb).
 
 ## SYM
 
-Hold **Tab** (left outer thumb) or **Backspace** (right inner thumb). With **Tab** held, the right thumbs type **(** (Backspace thumb) and **)** (Delete thumb). The right side is NUM with Shift: each key gives the symbol printed above that NUM key's number on a normal keyboard (8 → *, 2 → @). The ⌘ slot of NUM holds a plain **;** here.
+Hold **Tab** (left outer thumb) or **Backspace** (right inner thumb). With **Tab** held, the right thumbs type **(** (Backspace thumb) and **)** (Delete thumb). The right side is NUM with Shift: each key gives the symbol printed above that NUM key's number on a normal keyboard (8 → *, 2 → @). The ⌘ slot of NUM holds **:** here (Shift of the key right of L on a normal keyboard); the plain **;** is on the left pinky.
 
 | | | | | | ‖ | | | | | |
 |:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|
 | { | & | * | ( | } | ‖ | { | & | * | ( | } |
-| : | $ | % | ^ | + | ‖ | + | $ | % | ^ | ; |
+| ; | $ | % | ^ | + | ‖ | + | $ | % | ^ | : |
 | ~ | ! | @ | # | \| | ‖ | \| | ! | @ | # | ~ |
 | | | ` | _ | ▽ | ‖ | ▽ | ▽ | · | | |
